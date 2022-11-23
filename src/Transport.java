@@ -1,4 +1,4 @@
-public class Transport {
+public abstract class Transport {
 
     private String brand;
     private String model;
@@ -6,6 +6,7 @@ public class Transport {
     private String country;
     private String colorBody ;
     private double maxSpeed;
+    private String typeOfFuel;
 
 
     public String validateStringParameters(String value) {
@@ -18,14 +19,16 @@ public class Transport {
         return value == 0 ? 0 : Math.abs(value);
     }
 
-    public Transport(String brand, String model, int yearOfRelease, String country, String colorBody, double maxSpeed) {
+    public Transport(String brand, String model, int yearOfRelease, String country, String colorBody, double maxSpeed, String typeOfFuel) {
         validateStringParameters(this.brand = brand);
         validateStringParameters(this.model = model);
         validateIntParameters(this.yearOfRelease = yearOfRelease);
         validateStringParameters(this.country = country);
         validateStringParameters(this.colorBody = colorBody);
         validateDoubleParameters(this.maxSpeed = maxSpeed);
+        validateStringParameters(this.typeOfFuel=typeOfFuel);
     }
+    public abstract void refill();
 
     @Override
     public String toString() {
@@ -36,9 +39,16 @@ public class Transport {
                 ", country='" + country + '\'' +
                 ", colorBody='" + colorBody + '\'' +
                 ", maxSpeed=" + maxSpeed +
+                ", typeOfFuel='" + typeOfFuel + '\'' +
                 '}';
     }
 
+    public String getTypeOfFuel() {
+        return typeOfFuel;
+    }
+    public void setTypeOfFuel(String typeOfFuel) {
+        this.typeOfFuel = typeOfFuel;
+    }
     public void setColorBody(String colorBody) {
         if (colorBody!=null && !colorBody.isEmpty() && !colorBody.isBlank()) {this.colorBody = colorBody;
         }

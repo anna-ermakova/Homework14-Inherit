@@ -9,11 +9,12 @@ public class Car extends Transport {
     private String registrationNumber;
     private int numberOfSeats;
     private String carWheelSeason;
-
+    private String typeOfFuel;
 
     public Car(String brand, String model, int yearOfRelease, String country, String colorBody, double maxSpeed,
-               double engineVolume, String transmission, String typeOfBody, String registrationNumber, int numberOfSeats, String carWheelSeason) {
-        super(brand, model, yearOfRelease, country, colorBody, maxSpeed);
+               double engineVolume, String transmission, String typeOfBody, String registrationNumber, int numberOfSeats, String carWheelSeason,
+               String typeOfFuel) {
+        super(brand, model, yearOfRelease, country, colorBody, maxSpeed,typeOfFuel);
         validateDoubleParameters(this.engineVolume = engineVolume);
         validateStringParameters(this.transmission = transmission);
         validateStringParameters(this.typeOfBody = typeOfBody);
@@ -23,11 +24,16 @@ public class Car extends Transport {
     }
 
     @Override
+    public void refill() {
+        System.out.println("можно заправлять бензином, дизелем на заправке или заряжать на специальных электропарковках, если это электрокар");
+    }
+
+    @Override
     public String toString() {
         return "Transport{" +
                 "brand='" + getBrand() + '\'' +
                 ", model='" + getModel() + '\'' +
-                ", yearOfRelease=" + getYearOfRelease()+
+                ", yearOfRelease=" + getYearOfRelease() +
                 ", country='" + getCountry() + '\'' +
                 ", colorBody='" + getColorBody() + '\'' +
                 ", maxSpeed=" + getMaxSpeed() +
@@ -35,9 +41,9 @@ public class Car extends Transport {
                 ", transmission='" + getTransmission() + '\'' +
                 ", typeOfBody='" + getTypeOfBody() + '\'' +
                 ", registrationNumber='" + getRegistrationNumber() + '\'' +
-                ", numberOfSeats=" + getNumberOfSeats()+
+                ", numberOfSeats=" + getNumberOfSeats() +
                 ", carWheelSeason='" + getCarWheelSeason() + '\'' +
-                '}';
+                ", typeOfFuel='" + getTypeOfFuel();
     }
 
     public String checkRegistrationNumber() {

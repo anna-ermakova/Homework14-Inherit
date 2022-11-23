@@ -6,13 +6,19 @@ public class Train extends Transport {
     int numberOfWagons;
 
     public Train(String brand, String model, int yearOfRelease, String country, String colorBody, double maxSpeed,
-                 double travelPrice, double travelTime, String startStation, String finishStation, int numberOfWagons) {
-        super(brand, model, yearOfRelease, country, colorBody, maxSpeed);
+                 double travelPrice, double travelTime, String startStation, String finishStation, int numberOfWagons, String typeOfFuel) {
+        super(brand, model, yearOfRelease, country, colorBody, maxSpeed, typeOfFuel);
         validateDoubleParameters(this.travelPrice=travelPrice);
         validateDoubleParameters(this.travelTime = travelTime);
         validateStringParameters(this.startStation = startStation);
         validateStringParameters(this.finishStation = finishStation);
         validateIntParameters(this.numberOfWagons = numberOfWagons);
+    }
+
+    @Override
+    public void refill() {
+        System.out.println("нужно заправлять дизелем");
+
     }
 
     @Override
@@ -28,8 +34,7 @@ public class Train extends Transport {
                 ", travelTime=" + getTravelTime() +
                 ", startStation='" + getStartStation() + '\'' +
                 ", finishStation='" + getFinishStation() + '\'' +
-                ", numberOfWagons=" + getNumberOfWagons() +
-                '}';
+                ", numberOfWagons=" + getNumberOfWagons() + '\'' + ", typeOfFuel='" + getTypeOfFuel();
     }
 
     public double getTravelPrice() {
